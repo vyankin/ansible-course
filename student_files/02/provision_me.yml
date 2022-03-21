@@ -42,7 +42,7 @@
     - name: Install snmpd
       package:
         name:
-          - snmpd
+          - net-snmp
         state: present        
     - name: Put snmp.conf in /etc/snmp
       template:
