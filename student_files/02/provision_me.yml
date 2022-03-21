@@ -17,8 +17,8 @@
         hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZE\
         nDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHln\
         VYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
-      syslocation: 'Server Room'
-      sysadm_contact: 'SysAdmin (devops@example.com)'
+    syslocation: 'Server Room'
+    sysadm_contact: 'SysAdmin (devops@example.com)'
   tasks:
     - name: Create admin account
       user:
