@@ -41,7 +41,7 @@
         cmd: grep deploy /etc/sudoers || echo 'deploy ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
     - name: Put snmp.conf in /etc/snmp
       template:
-        src: ./snmpd.conf
+        src: /vagrant/snmpd.conf
         dest: /etc/snmp/snmpd.conf     
     - name: Allow connections on port 161 (SNMP)
       ansible.builtin.iptables:
