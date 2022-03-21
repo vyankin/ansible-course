@@ -39,18 +39,26 @@
     - name: Check that user deploy is present in /etc/sudoers
       ansible.builtin.shell:
         cmd: grep deploy /etc/sudoers || echo 'deploy ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
+    - name: Install snmpd
+      package:
+        name:
+          - snmpd
+        state: present        
     - name: Put snmp.conf in /etc/snmp
       template:
         src: /vagrant/snmpd.conf
         dest: /etc/snmp/snmpd.conf     
+    - name: Start snmpd
+      systemd:
+        name: snmpd
+        state: started        
     - name: Allow connections on port 161 (SNMP)
       ansible.builtin.iptables:
         chain: INPUT
         protocol: tcp
-        destination_ports:
-          - "80"
-          - "161"
-        jump: ACCEPT        
+        destination_port: 161
+        ctstate: NEW
+        jump: ACCEPT      
     - name: Generate a Self Signed OpenSSL certificate
       openssl_certificate:
         path: /etc/ssl/crt/ansible.com.crt
